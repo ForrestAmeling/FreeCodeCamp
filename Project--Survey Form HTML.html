@@ -18,6 +18,28 @@
       background-color: #181a1b;
     }
 
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      background-color: #181a1b;
+    }
+
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      background-color: #181a1b;
+    }
+
     label {
       padding: 12px 12px 12px 0;
       display: inline-block;
@@ -68,8 +90,30 @@
       clear: both;
     }
 
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input~.checkmark {
+      background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .container input:checked~.checkmark {
+      background-color: #2196F3;
+      color: #2196F3;
+    }
+
     /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
     @media screen and (max-width: 600px) {
+
       .col-25,
       .col-75,
       input[type="submit"] {
@@ -77,50 +121,61 @@
         margin-top: 0;
       }
     }
-
   </style>
 </head>
+
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 
 <body>
   <main id="main" class="container">
     <div class="row">
       <div class="col-xs-12 col-lg-offset-3 col-lg-6">
         <div class="title text-center">
-          <h1 id="title">Survey Form</h1>
+          <h1 id="title">Political Survey Form</h1>
           <p id="description" class="description">Some Information About Yourself</p>
         </div>
-        <form class="" action="/action_page.php" method="post">
+        <form id="survey-form" action="/action_page.php" method="post">
           <div class="row">
             <div class="col-25">
-              <label for="fname">First Name</label>
+              <label id="name-label" for="fname">First Name</label>
             </div>
             <div class="col-75">
-              <input type="text" id="fname" name="firstname" placeholder="Your name..">
+              <input type="text" id="name" name="firstname" placeholder="Your name.." required>
             </div>
           </div>
           <div class="row">
             <div class="col-25">
-              <label for="lname">Last Name</label>
+              <label id="last-name-label" for="lname">Last Name</label>
             </div>
             <div class="col-75">
-              <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+              <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
             </div>
           </div>
           <div class="row">
             <div class="col-25">
-              <label for="email">Email Address</label>
+              <label id="email-label" for="email">Email Address</label>
             </div>
             <div class="col-75">
-              <input type="text" id="email" name="email" placeholder="Email@Adress.com..">
+              <input type="email" name="email" id="email" class="input-field" required placeholder="Email@Adress.com..">
             </div>
           </div>
 
           <div class="row">
             <div class="col-25">
-              <label for="age">Birth Year</label>
+              <label id="number-label" for="age">Age: </label>
             </div>
             <div class="col-75">
-              <select id="age" name="age">
+
+              <input type="number" name="age" id="number" min="1" max="125" placeholder="Age" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label id="dropdown" for="age">Birth Year</label>
+            </div>
+            <div class="col-75">
+              <select id="dropdown" name="age">
                 <option value="" disabled selected>Select Your Birth Year..</option>
                 <option value="2019">2019</option>
                 <option value="2018">2018</option>
@@ -501,6 +556,7 @@
             </div>
             <div class="col-75">
               <select id="politics" name="politics">
+                <option value="" disabled selected>Select Your Political Ideology..</option>
                 <option value="Conservatism">Conservatism</option>
                 <option value="Liberalism">Liberalism</option>
                 <option value="Socialism">Socialism</option>
@@ -511,7 +567,7 @@
               </select>
             </div>
           </div>
-          <p id="description" class="description">Let Us Know What Issues Are Most Important To You</p>
+          <p id="description2" class="description2">Let Us Know What Issues Are Most Important To You</p>
           <div class="row">
             <div class="col-25">
               <label for="political issues">Political Issues</label>
@@ -519,44 +575,44 @@
             <div class="col-75">
 
               <fieldset>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">Social Issues</input>
+                <label for="Social Issues" class="checkbox">
+                  <input type="checkbox" id="Social-Issues" value="1">Social Issues</input>
                 </label>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">Environmental Issues</input>
+                <label for="Environmental issues" class="checkbox">
+                  <input type="checkbox" id="Environmental-issues" value="2">Environmental Issues</input>
                 </label>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">Immigration Issues</input>
+                <label for="Immigration issues" class="checkbox">
+                  <input type="checkbox" id="Immigration-issues" value="3">Immigration Issues</input>
                 </label>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">Domestic Policy Issues</input>
+                <label for="Domestic issues" class="checkbox">
+                  <input type="checkbox" id="Domestic-issues" value="4">Domestic Policy Issues</input>
                 </label>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">Healthcare Issues</input>
+                <label for="Healthcare issues" class="checkbox">
+                  <input type="checkbox" id="Healthcare-issues" value="5">Healthcare Issues</input>
                 </label>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">Economic Issues</input>
+                <label for="Economic issues" class="checkbox">
+                  <input type="checkbox" id="Economic-issues" value="6">Economic Issues</input>
                 </label>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">Education Issues</input>
+                <label for="Education issues" class="checkbox">
+                  <input type="checkbox" id="Education-issues" value="7">Education Issues</input>
                 </label>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">Electoral Issues</input>
+                <label for="Electoral issues" class="checkbox">
+                  <input type="checkbox" id="Electoral-issues" value="8">Electoral Issues</input>
                 </label>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">Foreign Policy Issues</input>
+                <label for="Foreign issues" class="checkbox">
+                  <input type="checkbox" id="Foreign-issues" value="9">Foreign Policy Issues</input>
                 </label>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">Criminal Issues</input>
+                <label for="Criminal issues" class="checkbox">
+                  <input type="checkbox" id="Criminal-issues" value="10">Criminal Issues</input>
                 </label>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">Science Issues</input>
+                <label for="Science issues" class="checkbox">
+                  <input type="checkbox" id="Science-issues" value="11">Science Issues</input>
                 </label>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">National Issues</input>
+                <label for="National issues" class="checkbox">
+                  <input type="checkbox" id="National-issues" value="12">National Issues</input>
                 </label>
-                <label for="political issues" class="checkbox">
-                  <input type="checkbox" id="political-issues">Transportation Issues</input>
+                <label for="Transportation issues" class="checkbox">
+                  <input type="checkbox" id="Transportation-issues" value="13">Transportation Issues</input>
 
 
                 </label>
@@ -571,20 +627,20 @@
             <div class="col-75">
 
               <fieldset>
-                <label for="vote" class="radio">
-                  <input type="radio" Name="voting" id="voting">Definitely</input>
+                <label for="Definitely" class="radio">
+                  <input type="radio" name="radio-buttons" id="Definitely" value="1">Definitely</input>
                 </label>
-                <label for="vote" class="radio">
-                  <input type="radio" Name="voting" id="voting">Most Likely</input>
+                <label for="Most-Likely" class="radio">
+                  <input type="radio" name="radio-buttons" id="Most-Likely" value="2">Most Likely</input>
                 </label>
-                <label for="vote" class="radio">
-                  <input type="radio" Name="voting" id="voting">Not Sure</input>
+                <label for="Not-Sure" class="radio">
+                  <input type="radio" name="radio-buttons" id="Not-Sure" value="3">Not Sure</input>
                 </label>
-                <label for="vote" class="radio">
-                  <input type="radio" Name="voting" id="voting">Likely Not</input>
+                <label for="Likely-Not" class="radio">
+                  <input type="radio" name="radio-buttons" id="Likely-Not" value="4">Likely Not</input>
                 </label>
-                <label for="vote" class="radio">
-                  <input type="radio" Name="voting" id="voting">Not At All</input>
+                <label for="Not-At-All" class="radio">
+                  <input type="radio" name="radio-buttons" id="Not-At-All" value="5">Not At All</input>
                 </label>
 
               </fieldset>
@@ -599,7 +655,7 @@
             </div>
           </div>
           <div class="row">
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" id="submit">
           </div>
         </form>
 
