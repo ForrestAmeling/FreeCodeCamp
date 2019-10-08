@@ -2,81 +2,82 @@
 
 <head>
   <style>
-    * {
-      box-sizing: border-box;
-      color: white;
-    }
+  * {
+    box-sizing: border-box;
+    color: white;
+  }
 
-    input[type="text"],
-    select,
-    textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      resize: vertical;
-      background-color: #181a1b;
-    }
+  input[type="text"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: #181a1b;
+  }
 
-    label {
-      padding: 12px 12px 12px 0;
-      display: inline-block;
-    }
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
 
+  input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  .container {
+    border-radius: 5px;
+    background-color: #1c1e1f;
+    padding: 20px;
+  }
+
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+    color: white;
+  }
+
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+    color: white;
+  }
+
+  .checkbox {
+    display: block;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col-25,
+    .col-75,
     input[type="submit"] {
-      background-color: #4caf50;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      float: right;
+      width: 100%;
+      margin-top: 0;
     }
+  }
 
-    input[type="submit"]:hover {
-      background-color: #45a049;
-    }
-
-    .container {
-      border-radius: 5px;
-      background-color: #1c1e1f;
-      padding: 20px;
-    }
-
-    .col-25 {
-      float: left;
-      width: 25%;
-      margin-top: 6px;
-      color: white;
-    }
-
-    .col-75 {
-      float: left;
-      width: 75%;
-      margin-top: 6px;
-      color: white;
-    }
-
-    .checkbox {
-      display: block;
-    }
-
-    /* Clear floats after the columns */
-    .row:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
-    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-    @media screen and (max-width: 600px) {
-      .col-25,
-      .col-75,
-      input[type="submit"] {
-        width: 100%;
-        margin-top: 0;
-      }
-    }
 
   </style>
 </head>
@@ -86,7 +87,7 @@
     <div class="row">
       <div class="col-xs-12 col-lg-offset-3 col-lg-6">
         <div class="title text-center">
-          <h1 id="title">Survey Form</h1>
+          <h1 id="title">Political Survey Form</h1>
           <p id="description" class="description">Some Information About Yourself</p>
         </div>
         <form class="" action="/action_page.php" method="post">
@@ -501,6 +502,7 @@
             </div>
             <div class="col-75">
               <select id="politics" name="politics">
+                <option value="" disabled selected>Select Your Political Ideology..</option>
                 <option value="Conservatism">Conservatism</option>
                 <option value="Liberalism">Liberalism</option>
                 <option value="Socialism">Socialism</option>
